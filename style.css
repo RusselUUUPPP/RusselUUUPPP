@@ -36,6 +36,14 @@ body {
     background-color: var(--bg-app);
     min-height: 100vh;
     position: relative;
+    /* Target desain: 1080 x 1920 (portrait) */
+    min-height: 100vh;
+    max-height: none;
+    margin: 0 auto;
+    padding-bottom: 92px;
+    box-sizing: border-box;
+
+
     box-shadow: 0 10px 25px rgba(0,0,0,0.1);
     display: flex;
     flex-direction: column;

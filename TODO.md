@@ -7,5 +7,3 @@
 
 - [ ] (Opsional) Kurangi inline style di `Tes.html` setelah tampilan stabil.
 - [ ] Verifikasi dengan membuka `index.html` dan `Tes.html` di browser.
-
-

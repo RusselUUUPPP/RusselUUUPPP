@@ -185,4 +185,78 @@
         </main>
 
         <!-- BOTTOM NAVIGATION -->
-        <nav class="bot
+        <nav class="bottom-nav">
+            <a href="#" class="nav-item active">
+                <i class="fa-solid fa-house"></i>
+                <span>Beranda</span>
+            </a>
+            <a href="rekomendasi.html" class="nav-item">
+                <i class="fa-regular fa-heart"></i>
+                <span>Rekomendasi</span>
+            </a>
+            
+            <!-- Tombol Tengah (Floating) -->
+            <div class="nav-item-center">
+                <div class="center-btn">
+                    <i class="fa-solid fa-leaf"></i>
+                </div>
+            </div>
+            
+            <a href="#" class="nav-item">
+                <i class="fa-regular fa-clock"></i>
+                <span>Riwayat</span>
+            </a>
+            <a href="profile.html" class="nav-item">
+                <i class="fa-regular fa-user"></i>
+                <span>Profil</span>
+            </a>
+        </nav>
+
+    </div>
+
+<script>
+    (function () {
+        const glassesEl = document.getElementById('glasses');
+        const countEl = document.getElementById('water-count');
+        if (!glassesEl || !countEl) return;
+
+        const capacity = 8;
+
+        function getCurrentCount() {
+            return glassesEl.querySelectorAll('.glass.filled').length;
+        }
+
+        function updateUI() {
+            const current = getCurrentCount();
+            countEl.textContent = `${current} / ${capacity} gelas`;
+        }
+
+        function fillOneGlass() {
+            const empty = glassesEl.querySelector('.glass:not(.filled)');
+            if (!empty) return;
+            empty.classList.add('filled');
+            empty.setAttribute('aria-label', 'Gelas terisi');
+            updateUI();
+        }
+
+        // Semua gelas jadi tombol: klik/Enter/Space akan menambah 1 gelas terisi (kalau masih ada yang kosong)
+        glassesEl.addEventListener('click', (e) => {
+            const target = e.target.closest('.glass');
+            if (!target) return;
+            fillOneGlass();
+        });
+
+        glassesEl.addEventListener('keydown', (e) => {
+            if (e.key !== 'Enter' && e.key !== ' ') return;
+            const target = e.target.closest('.glass');
+            if (!target) return;
+            e.preventDefault();
+            fillOneGlass();
+        });
+
+        // init
+        updateUI();
+    })();
+</script>
+</body>
+</html>
