@@ -552,7 +552,7 @@ function initNotificationFeature() {
                 title: 'Notifikasi Terbaru',
                 text: `
                     <div style="text-align: left;">
-                        <p style="margin-bottom: 12px; font-size: 13px;">
+                        <p style="margin-bottom: 14px; font-size: 13px;">
                             <b>💧 Jangan Lupa Minum!</b><br>
                             Cuaca sedang panas, pastikan target 8 gelas airmu tercapai hari ini.
                         </p>
