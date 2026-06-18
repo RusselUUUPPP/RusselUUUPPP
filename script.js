@@ -114,7 +114,7 @@ function createCustomModal(options) {
 
         let buttonsHtml = `<div style="display: flex; gap: 12px;">`;
         if (options.type === 'confirm' || options.type === 'prompt') {
-            buttonsHtml += `<button id="btn-modal-cancel" style="flex: 1; padding: 12px; background: #f3f4f6; color: #4b5563; border: none; border-radius: 12px; font-weight: 600; font-size: 14px; cursor: pointer;">Batal</button>`;
+            buttonsHtml += `<button id="btn-modal-cancel" style="flex: 1; padding: 12px; background: #f3f4f6; color: #4b5563; border: none; border-radius: 12px; font-weight: 600; font-size: 14px; cursor: pointer;">Tidak</button>`;
         }
         buttonsHtml += `<button id="btn-modal-confirm" style="flex: 1; padding: 12px; background: #439b46; color: #fff; border: none; border-radius: 12px; font-weight: 600; font-size: 14px; cursor: pointer;">${options.confirmText || 'Oke'}</button>`;
         buttonsHtml += `</div>`;
@@ -411,7 +411,7 @@ function initProfileEdit() {
             </div>
 
             <div style="display: flex; gap: 12px; margin-bottom: 10px;">
-                <button id="btn-cancel-edit" style="flex: 1; padding: 14px; background: #f3f4f6; color: #4b5563; border: none; border-radius: 14px; font-weight: 600; font-size: 14px; cursor: pointer;">Batal</button>
+                <button id="btn-cancel-edit" style="flex: 1; padding: 14px; background: #f3f4f6; color: #4b5563; border: none; border-radius: 14px; font-weight: 600; font-size: 14px; cursor: pointer;">Tidak</button>
                 <button id="btn-save-edit" style="flex: 1; padding: 14px; background: #439b46; color: #fff; border: none; border-radius: 14px; font-weight: 600; font-size: 14px; cursor: pointer;">Simpan Data</button>
             </div>
         `;
