@@ -10,34 +10,31 @@
 </head>
 <body>
 
-    <div class="mobile-container " >
-        <div class="status-bar-sim">
-            <span class="time">9:41</span>
-            <div class="status-icons">
-                <i class="fa-solid fa-signal"></i>
-                <i class="fa-solid fa-wifi"></i>
-                <i class="fa-solid fa-battery-full"></i>
-            </div>
-        </div>
-     
+    <style>
+        .header-green-profile {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 40px 24px 60px 24px; /* Padding bawah lebih panjang untuk efek overlap */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-radius: 0 0 24px 24px;
+            position: relative;
+            z-index: 10;
+        }
+        .header-green-profile h1 { font-size: 18px; font-weight: 600; }
+        .header-green-profile .icon-btn { color: var(--white); font-size: 20px; text-decoration: none; }
+    </style>
 
-        <header class="header">
-    
-            <div class="profile">
-                <!-- Ganti path gambar agar menjadi file lokal yang se-folder dengan file HTML -->
-                <img src="img/profile.webp" alt="Profile" class="profile-img">
-                <div class="profile-text">
-                    <h1>Halo, Oline Manuel 👋</h1>
-                    <p>Semangat jaga nutrisi hari ini!</p>
-                </div>
-            </div>
-            <button class="bell-btn">
-                <i class="fa-regular fa-bell"></i>
-                <span class="dot"></span>
-            </button>
-      
-            
+    <div class="mobile-container " >
+        
+        <header class="header-green-profile">
+            <a href="dashboard.html" class="icon-btn"><i class="fa-solid fa-arrow-left"></i></a>
+            <h1>Rekomendasi</h1>
+            <a href="#" class="icon-btn"><i class="fa-solid fa-bell"></i></a>
         </header>
+            
+        
 
         <!-- KONTEN UTAMA -->
         <main class="content-rekomendasi">
@@ -67,7 +64,7 @@
                 <!-- Menu 1 -->
                 <div class="food-list-card">
                     <div class="food-list-img-wrapper">
-                        <img src="https://images.unsplash.com/photo-1627308595229-7830f5c9100f?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Nasi Telur Kecap" class="food-list-img">
+                        <img src="img/nasitelor.webp" alt="Nasi Telur Kecap" class="food-list-img">
                     </div>
                     <div class="food-list-info">
                         <h3 class="food-list-title">Nasi Telur Kecap</h3>
@@ -89,7 +86,7 @@
                 <!-- Menu 2 -->
                 <div class="food-list-card">
                     <div class="food-list-img-wrapper">
-                        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Tumis Tahu Sayur" class="food-list-img">
+                        <img src="img/tumistahu.jpeg" alt="Tumis Tahu Sayur" class="food-list-img">
                     </div>
                     <div class="food-list-info">
                         <h3 class="food-list-title">Tumis Tahu Sayur</h3>
@@ -111,7 +108,7 @@
                 <!-- Menu 3 -->
                 <div class="food-list-card">
                     <div class="food-list-img-wrapper">
-                        <img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Nasi Tempe Sambal" class="food-list-img">
+                        <img src="img/nasitempe.jpg" alt="Nasi Tempe Sambal" class="food-list-img">
                     </div>
                     <div class="food-list-info">
                         <h3 class="food-list-title">Nasi Tempe Sambal</h3>
