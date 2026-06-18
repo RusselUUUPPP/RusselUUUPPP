@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NutriKos - Rekomendasi Menu</title>
+    <!-- Font Awesome untuk ikon -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="mobile-container " >
+        <div class="status-bar-sim">
+            <span class="time">9:41</span>
+            <div class="status-icons">
+                <i class="fa-solid fa-signal"></i>
+                <i class="fa-solid fa-wifi"></i>
+                <i class="fa-solid fa-battery-full"></i>
+            </div>
+        </div>
+     
+
+        <header class="header">
+    
+            <div class="profile">
+                <!-- Ganti path gambar agar menjadi file lokal yang se-folder dengan file HTML -->
+                <img src="img/profile.webp" alt="Profile" class="profile-img">
+                <div class="profile-text">
+                    <h1>Halo, Oline Manuel 👋</h1>
+                    <p>Semangat jaga nutrisi hari ini!</p>
+                </div>
+            </div>
+            <button class="bell-btn">
+                <i class="fa-regular fa-bell"></i>
+                <span class="dot"></span>
+            </button>
+      
+            
+        </header>
+
+        <!-- KONTEN UTAMA -->
+        <main class="content-rekomendasi">
+            
+            <!-- Kategori Tabs -->
+            <div class="tabs-wrapper">
+                <div class="tab-pill">Semua</div>
+                <div class="tab-pill active">Hemat</div>
+                <div class="tab-pill">Tinggi Protein</div>
+                <div class="tab-pill">Cepat</div>
+            </div>
+
+            <!-- Banner Promo / Info -->
+            <div class="promo-banner">
+                <div class="promo-text">
+                    <h3>Menu hemat khusus anak kos.</h3>
+                    <p>Sehat, enak, dan ramah di kantong!</p>
+                </div>
+                <div class="promo-icon-box">
+                    <i class="fa-solid fa-hand-holding-dollar" style="color: var(--primary); font-size: 24px;"></i>
+                </div>
+            </div>
+
+            <!-- Daftar Makanan (Food List) -->
+            <div class="food-list">
+                
+                <!-- Menu 1 -->
+                <div class="food-list-card">
+                    <div class="food-list-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1627308595229-7830f5c9100f?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Nasi Telur Kecap" class="food-list-img">
+                    </div>
+                    <div class="food-list-info">
+                        <h3 class="food-list-title">Nasi Telur Kecap</h3>
+                        <p class="food-list-price">~ Rp 6.000</p>
+                        <p class="food-list-nutrisi">480 kkal &bull; 19g Protein &bull; 5g Serat</p>
+                    </div>
+                    <div class="food-list-right">
+                        <i class="fa-regular fa-bookmark btn-bookmark"></i>
+                        <div class="food-score-container">
+                            <p class="food-score-title">Skor Gizi</p>
+                            <div class="food-score-circle-wrapper">
+                                <div class="food-score-circle">78</div>
+                                <span class="food-score-max">/100</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Menu 2 -->
+                <div class="food-list-card">
+                    <div class="food-list-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Tumis Tahu Sayur" class="food-list-img">
+                    </div>
+                    <div class="food-list-info">
+                        <h3 class="food-list-title">Tumis Tahu Sayur</h3>
+                        <p class="food-list-price">~ Rp 5.000</p>
+                        <p class="food-list-nutrisi">410 kkal &bull; 16g Protein &bull; 6g Serat</p>
+                    </div>
+                    <div class="food-list-right">
+                        <i class="fa-regular fa-bookmark btn-bookmark"></i>
+                        <div class="food-score-container">
+                            <p class="food-score-title">Skor Gizi</p>
+                            <div class="food-score-circle-wrapper">
+                                <div class="food-score-circle">76</div>
+                                <span class="food-score-max">/100</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Menu 3 -->
+                <div class="food-list-card">
+                    <div class="food-list-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Nasi Tempe Sambal" class="food-list-img">
+                    </div>
+                    <div class="food-list-info">
+                        <h3 class="food-list-title">Nasi Tempe Sambal</h3>
+                        <p class="food-list-price">~ Rp 6.500</p>
+                        <p class="food-list-nutrisi">550 kkal &bull; 22g Protein &bull; 7g Serat</p>
+                    </div>
+                    <div class="food-list-right">
+                        <i class="fa-regular fa-bookmark btn-bookmark"></i>
+                        <div class="food-score-container">
+                            <p class="food-score-title">Skor Gizi</p>
+                            <div class="food-score-circle-wrapper">
+                                <div class="food-score-circle">84</div>
+                                <span class="food-score-max">/100</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Menu 4 -->
+                <div class="food-list-card">
+                    <div class="food-list-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Mie Goreng Sayur" class="food-list-img">
+                    </div>
+                    <div class="food-list-info">
+                        <h3 class="food-list-title">Mie Goreng Sayur</h3>
+                        <p class="food-list-price">~ Rp 4.500</p>
+                        <p class="food-list-nutrisi">470 kkal &bull; 15g Protein &bull; 4g Serat</p>
+                    </div>
+                    <div class="food-list-right">
+                        <i class="fa-regular fa-bookmark btn-bookmark"></i>
+                        <div class="food-score-container">
+                            <p class="food-score-title">Skor Gizi</p>
+                            <div class="food-score-circle-wrapper">
+                                <div class="food-score-circle">72</div>
+                                <span class="food-score-max">/100</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+
+        <!-- BOTTOM NAVIGATION -->
+        <nav class="bottom-nav">
+            <!-- Navigasi ke Dashboard -->
+            <a href="dashboard.html" class="nav-item">
+                <i class="fa-solid fa-house"></i>
+                <span>Beranda</span>
+            </a>
+            <!-- Navigasi Aktif -->
+            <a href="#" class="nav-item active">
+                <i class="fa-solid fa-heart"></i>
+                <span>Rekomendasi</span>
+            </a>
+            
+            <div class="nav-item-center">
+                <div class="center-btn">
+                    <i class="fa-solid fa-leaf"></i>
+                </div>
+            </div>
+            
+            <a href="#" cl

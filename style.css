@@ -1,0 +1,712 @@
+/* --- VARIABEL WARNA NUTRIKOS --- */
+
+:root {
+    --primary: #439b46;       /* Hijau utama NutriKos */
+    --primary-dark: #357d38;
+    --primary-light: #eaf3ea; /* Hijau super muda untuk background/aksen */
+    --bg-app: #f8f9fa;        /* Abu-abu sangat muda untuk background layar */
+    --text-dark: #1a1a1a;
+    --text-gray: #7a7a7a;
+    --white: #ffffff;
+    --blue-water: #4ca1f0;
+    --blue-water-light: #d8eafb;
+    --accent-orange: #f59e0b; /* Warna aksen untuk api/langkah */
+}
+
+/* --- RESET CSS --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #e5e7eb; /* Background luar layar HP */
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/* --- CONTAINER UTAMA (LAYAR MOBILE) --- */
+.mobile-container {
+    width: 100%;
+    max-width: 420px;
+    padding-bottom: 92px;
+    background-color: var(--bg-app);
+    min-height: 100vh;
+    position: relative;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+/* Hilangkan scrollbar tapi tetap bisa di-scroll */
+.content::-webkit-scrollbar { display: none; }
+.content { -ms-overflow-style: none; scrollbar-width: none; padding: 16px 20px 100px 20px; display: flex; flex-direction: column; gap: 20px; flex: 1; overflow-y: auto; }
+
+/* --- HEADER --- */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 24px 15px 24px;
+    background-color: var(--bg-app);
+}
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.profile-img {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--primary-light);
+}
+.profile-text h1 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+.profile-text p {
+    font-size: 12px;
+    color: var(--text-gray);
+    margin-top: 2px;
+}
+.bell-btn {
+    position: relative;
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: var(--text-dark);
+    cursor: pointer;
+}
+.bell-btn .dot {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 8px;
+    height: 8px;
+    background-color: #ef4444;
+    border-radius: 50%;
+}
+
+/* --- KONTEN UTAMA --- */
+/* (dibuat konsolidasi di blok scrollbar untuk menghindari duplikasi) */
+
+
+/* --- SECTION: TARGET HARI INI --- */
+.card-target {
+    background-color: var(--primary);
+    color: var(--white);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(67, 155, 70, 0.2);
+}
+.target-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+.target-header h2 { font-size: 16px; font-weight: 600; }
+.target-header a { color: rgba(255,255,255,0.8); font-size: 12px; text-decoration: none; }
+
+.cal-box { margin-bottom: 20px; }
+.cal-box p { font-size: 13px; opacity: 0.9; margin-bottom: 4px; }
+.cal-values {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 8px;
+}
+.cal-values h3 { font-size: 22px; font-weight: 700; }
+.cal-values h3 span { font-size: 14px; font-weight: 400; opacity: 0.8; }
+.cal-values .percent { font-size: 14px; font-weight: 600; }
+
+.progress-bar-bg {
+    width: 100%;
+    height: 6px;
+    background-color: rgba(0,0,0,0.15);
+    border-radius: 6px;
+}
+.progress-bar-fill {
+    height: 100%;
+    background-color: var(--white);
+    border-radius: 6px;
+    width: 82%;
+}
+
+.macros {
+    display: flex;
+    gap: 20px;
+}
+.macro-item { flex: 1; }
+.macro-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+.macro-progress-bg {
+    width: 100%;
+    height: 4px;
+    background-color: rgba(0,0,0,0.15);
+    border-radius: 4px;
+    margin-bottom: 6px;
+}
+.macro-progress-fill {
+    height: 100%;
+    background-color: var(--white);
+    border-radius: 4px;
+}
+.macro-item p { font-size: 11px; opacity: 0.8; }
+
+/* --- SECTION: MINUM AIR --- */
+.card-white {
+    background-color: var(--white);
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.water-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.water-info { display: flex; flex-direction: column; gap: 8px; }
+.water-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+.water-title i { color: var(--blue-water); }
+.water-count { font-size: 12px; color: var(--text-gray); font-weight: 500; margin-bottom: 4px; }
+
+.glasses { display: flex; gap: 4px; }
+.glass {
+    width: 14px;
+    height: 20px;
+    background-color: var(--blue-water-light);
+    border-radius: 0 0 4px 4px;
+}
+.glass.filled { background-color: var(--blue-water); opacity: 0.8; }
+
+.btn-add-water {
+    width: 32px; height: 32px;
+    border: 1px solid #e5e7eb; border-radius: 50%;
+    background: none; color: #9ca3af;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; font-size: 14px;
+}
+
+/* --- SECTION: STEPS & CALORIES BURNED --- */
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.card-sm {
+    background-color: var(--white);
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    display: flex;
+    flex-direction: column;
+}
+.card-sm-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 16px;
+}
+.card-sm-title i { color: var(--accent-orange); }
+
+/* Steps Donut Chart */
+.steps-wrapper { align-items: center; }
+.donut {
+    width: 80px; height: 80px;
+    background: conic-gradient(var(--primary) 0% 63%, #f3f4f6 63% 100%);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 12px;
+}
+.donut-inner {
+    width: 60px; height: 60px;
+    background-color: var(--white);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; font-weight: 700; color: var(--text-dark);
+}
+.steps-goal { font-size: 12px; font-weight: 500; color: var(--text-gray); }
+
+/* Calories Burned */
+.burn-val { font-size: 20px; font-weight: 700; color: var(--text-dark); margin-bottom: 16px; }
+.burn-footer { margin-top: auto; }
+.burn-bar {
+    width: 100%; height: 8px;
+    background-color: #f3f4f6;
+    border-radius: 8px; margin-bottom: 8px;
+}
+.burn-fill {
+    width: 30%; height: 100%;
+    background-color: var(--primary);
+    border-radius: 8px;
+}
+.burn-labels { display: flex; justify-content: space-between; font-size: 11px; }
+.burn-labels .val { font-weight: 700; color: var(--text-dark); }
+.burn-labels .lbl { color: var(--text-gray); }
+
+/* --- SECTION: REKOMENDASI (di dashboard) --- */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+.section-header h2 { font-size: 15px; font-weight: 600; color: var(--text-dark); }
+.section-header a { font-size: 12px; color: var(--primary); text-decoration: none; }
+
+.food-card { display: flex; gap: 12px; align-items: center; }
+
+.food-img { width: 80px; height: 80px; border-radius: 12px; object-fit: cover; }
+.food-details { flex: 1; }
+.food-details h3 { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+.food-badge {
+    display: inline-block;
+    background-color: var(--primary-light); color: var(--primary);
+    font-size: 10px; font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 20px;
+    margin-bottom: 8px;
+}
+.food-stats { display: flex; gap: 12px; font-size: 11px; color: var(--text-gray); }
+.food-stats i.fa-fire { color: #f59e0b; }
+.food-stats i.fa-leaf { color: var(--primary); }
+
+.food-score { text-align: center; }
+.food-score p { font-size: 10px; color: var(--text-gray); margin-bottom: 4px; }
+.score-circle {
+    width: 46px; height: 46px;
+    border: 3px solid var(--primary);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; font-weight: 700; color: var(--primary);
+}
+
+/* --- SECTION: FITUR CEPAT --- */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    width: 100%;
+}
+
+
+/* Biar tombol/link feature tidak ngasih lebar berlebihan */
+.feature-item {
+    width: auto;
+}
+.feature-item { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.feature-icon {
+    width: 48px; height: 48px;
+    background-color: var(--white);
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+}
+.feature-item p {
+    font-size: 11px;
+    color: var(--text-gray);
+    text-align: center;
+    font-weight: 500;
+    line-height: 1.3;
+}
+
+/* --- BOTTOM NAVIGATION --- */
+.bottom-nav {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 420px;
+    width: 100%;
+    background-color: var(--white);
+    border-top: 1px solid #f3f4f6;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 10px 20px 10px;
+    border-radius: 24px 24px 0 0;
+    box-shadow: 0 -4px 15px rgba(0,0,0,0.03);
+    z-index: 20;
+}
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    color: #9ca3af;
+    text-decoration: none;
+    width: 60px;
+}
+.nav-item.active { color: var(--primary); }
+.nav-item i { font-size: 20px; }
+.nav-item span { font-size: 10px; font-weight: 500; }
+
+.nav-item-center { position: relative; top: -20px; }
+.center-btn {
+    width: 56px; height: 56px;
+    background-color: var(--primary); color: var(--white);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px;
+    box-shadow: 0 8px 16px rgba(67, 155, 70, 0.3);
+    border: 4px solid var(--white);
+}
+
+/* ==========================
+   REKOMENDASI PAGE (rekomendasi.html)
+   ========================== */
+
+/* container rekomendasi */
+.content-rekomendasi {
+    padding-bottom: 92px;
+}
+
+.header-green {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 16px;
+    background-color: var(--primary);
+    color: var(--white);
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.icon-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.18);
+    color: var(--white);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.header-green h1 {
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.tabs-wrapper {
+    display: flex;
+    gap: 10px;
+    padding: 14px 16px 0 16px;
+}
+
+.tab-pill {
+    padding: 8px 12px;
+    border-radius: 999px;
+    background-color: #f3f4f6;
+    color: var(--text-gray);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.tab-pill.active {
+    background-color: var(--primary);
+    color: var(--white);
+}
+
+.promo-banner {
+    margin: 14px 16px 0 16px;
+    background: var(--white);
+    border-radius: 16px;
+    padding: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.promo-text h3 {
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--text-dark);
+}
+
+.promo-text p {
+    font-size: 12px;
+    color: var(--text-gray);
+    margin-top: 4px;
+}
+
+.promo-icon-box {
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+    background: var(--primary-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.food-list {
+    padding: 14px 16px 16px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.food-list-card {
+    background-color: var(--white);
+    border-radius: 16px;
+    padding: 12px;
+    display: flex;
+    gap: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.food-list-img-wrapper {
+    position: relative;
+    width: 88px;
+    height: 88px;
+    flex: 0 0 auto;
+}
+
+.food-list-img {
+    width: 88px;
+    height: 88px;
+    object-fit: cover;
+    border-radius: 14px;
+}
+
+.badge-hemat-img {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background-color: rgba(67, 155, 70, 0.12);
+    color: var(--primary);
+    font-size: 11px;
+    font-weight: 900;
+    padding: 4px 10px;
+    border-radius: 999px;
+}
+
+.food-list-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.food-list-title {
+    font-size: 14px;
+    font-weight: 900;
+    color: var(--text-dark);
+    margin-bottom: 2px;
+}
+
+.food-list-price {
+    font-size: 12px;
+    color: var(--text-gray);
+    font-weight: 700;
+}
+
+.food-list-nutrisi {
+    font-size: 11px;
+    color: var(--text-gray);
+    margin-top: 6px;
+    line-height: 1.3;
+}
+
+.food-list-right {
+    width: 54px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+}
+
+.btn-bookmark {
+    color: #cbd5e1;
+    font-size: 16px;
+}
+
+.food-score-container {
+    text-align: right;
+}
+
+.food-score-title {
+    font-size: 10px;
+    color: var(--text-gray);
+    font-weight: 800;
+    margin-bottom: 4px;
+}
+.login-page {
+    background-color: #fcfdfc;
+    justify-content: space-between;
+    padding-top: 0;
+}
+
+/* Simulasi Status Bar Atas */
+.status-bar-sim {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 24px 5px 24px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1a1a1a;
+    z-index: 10;
+}
+.status-icons { display: flex; gap: 6px; font-size: 12px; }
+
+/* Hero & Logo Area */
+.hero-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    width: 100%;
+    padding-top: 20px;
+    position: relative;
+}
+.logo-container {
+    text-align: center;
+    margin-bottom: 20px;
+    z-index: 5;
+}
+.logo-icon-main {
+    width: 70px; height: 70px;
+    background: linear-gradient(135deg, #439b46, #66bb6a);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    margin: 0 auto 12px auto;
+    box-shadow: 0 6px 16px rgba(67, 155, 70, 0.25);
+}
+.logo-title {
+    font-size: 32px;
+    font-weight: 800;
+    color: #1b4d22;
+    letter-spacing: -0.5px;
+}
+.logo-title span { color: #7cb342; }
+.logo-tagline {
+    font-size: 12px;
+    color: var(--text-gray);
+    font-weight: 600;
+    margin-top: 4px;
+}
+
+/* Wrapper Gambar Ilustrasi */
+.hero-image-wrapper {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    overflow: hidden;
+}
+.hero-img {
+    width: 95%;
+    max-height: 280px;
+    object-fit: cover;
+    border-radius: 24px 24px 0 0;
+    mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+}
+
+/* Kartu Putih Melengkung di Bawah */
+.auth-card {
+    background-color: var(--white);
+    border-radius: 36px 36px 0 0;
+    padding: 35px 28px 40px 28px;
+    text-align: center;
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.04);
+    z-index: 5;
+    position: relative;
+}
+.auth-headline {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 30px;
+}
+
+/* Tombol Aksi */
+.auth-action-group {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 30px;
+}
+.btn-primary-nutri {
+    width: 100%;
+    padding: 16px;
+    background-color: var(--primary);
+    color: var(--white);
+    border: none;
+    border-radius: 14px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.btn-primary-nutri:hover { background-color: var(--primary-dark); }
+.btn-secondary-nutri {
+    width: 100%;
+    padding: 16px;
+    background-color: var(--white);
+    color: var(--text-dark);
+    border: 1.5px solid #d1d5db;
+    border-radius: 14px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.btn-secondary-nutri:hover { background-color: #f9fafb; }
+
+/* Teks Kebijakan Privasi */
+.auth-footer-text {
+    font-size: 11px;
+    color: #9ca3af;
+    line-height: 1.6;
+}
+.auth-footer-text a {
+    color: #4b5563;
+    font-weight: 600;
+    text-decoration: none;
+}
+.auth-footer-text a:hover { text-decoration: underline; }
+
+/* Dekorasi Ombak Hijau Paling Bawah */
+.bottom-wave-deco {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 15px;
+    background: linear-gradient(90deg, #c5e1a5, #a7f3d0);
+    opacity: 0.4;
+    z-index: 1;
+}
+
