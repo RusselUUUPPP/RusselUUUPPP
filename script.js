@@ -11,6 +11,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Fitur Gamifikasi Baru
     initKantinScanner();
+
+    // Fitur Detail Target Harian (Baru Ditambahkan)
+    initLihatDetail();
 });
 
 // --- FITUR 1: WATER INTAKE TRACKER (DENGAN GAMIFIKASI STREAK & POIN) ---
@@ -101,18 +104,15 @@ function initWaterTracker() {
 
 // --- FITUR GAMIFIKASI BARU: SCAN QR KANTIN MITRA ---
 function initKantinScanner() {
-    // Ambil tombol daun melayang di tengah bawah
     const scanBtns = document.querySelectorAll('.center-btn');
     
     scanBtns.forEach(btn => {
         btn.addEventListener('click', async function(e) {
             e.preventDefault();
             
-            // Animasi tombol ketika diklik
             this.style.transform = 'scale(0.9)';
             setTimeout(() => this.style.transform = 'scale(1)', 150);
 
-            // 1. Munculkan popup simulasi scanning
             await createCustomModal({
                 type: 'alert',
                 icon: '<i class="fa-solid fa-qrcode fa-fade" style="color: #439b46; font-size: 46px;"></i>',
@@ -121,7 +121,6 @@ function initKantinScanner() {
                 confirmText: 'Deteksi'
             });
 
-            // 2. Munculkan popup hasil scan (Reward Poin)
             setTimeout(async () => {
                 await createCustomModal({
                     type: 'alert',
@@ -136,7 +135,7 @@ function initKantinScanner() {
                         ⭐ <b>+20 NutriPoin</b> berhasil ditambahkan karena kamu memilih menu berserat tinggi!
                     `
                 });
-            }, 300); // jeda singkat setelah modal pertama ditutup
+            }, 300);
         });
     });
 }
@@ -164,18 +163,20 @@ function createCustomModal(options) {
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
             transform: translateY(20px) scale(0.95); transition: all 0.3s ease;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-height: 80vh; display: flex; flex-direction: column;
         `;
 
-        let iconHtml = options.icon ? `<div style="font-size: 36px; margin-bottom: 16px;">${options.icon}</div>` : '';
-        let titleHtml = `<h3 style="font-size: 18px; font-weight: 700; color: #1a1a1a; margin-bottom: 8px;">${options.title}</h3>`;
-        let textHtml = `<p style="font-size: 13px; color: #7a7a7a; margin-bottom: 24px; line-height: 1.6;">${options.text}</p>`;
+        let iconHtml = options.icon ? `<div style="font-size: 36px; margin-bottom: 16px; flex-shrink: 0;">${options.icon}</div>` : '';
+        let titleHtml = `<h3 style="font-size: 18px; font-weight: 700; color: #1a1a1a; margin-bottom: 8px; flex-shrink: 0;">${options.title}</h3>`;
+        // Bungkus text dalam scrollable div jika kontennya panjang
+        let textHtml = `<div style="font-size: 13px; color: #7a7a7a; margin-bottom: 24px; line-height: 1.6; overflow-y: auto; text-align: left; padding-right: 4px;">${options.text}</div>`;
         
         let inputHtml = '';
         if (options.type === 'prompt') {
-            inputHtml = `<input type="number" id="nutrikos-modal-input" placeholder="${options.placeholder || ''}" style="width: 100%; padding: 14px; border: 2px solid #e5e7eb; border-radius: 12px; margin-bottom: 24px; font-size: 15px; text-align: center; outline: none; transition: border-color 0.2s;">`;
+            inputHtml = `<input type="number" id="nutrikos-modal-input" placeholder="${options.placeholder || ''}" style="width: 100%; padding: 14px; border: 2px solid #e5e7eb; border-radius: 12px; margin-bottom: 24px; font-size: 15px; text-align: center; outline: none; transition: border-color 0.2s; flex-shrink: 0;">`;
         }
 
-        let buttonsHtml = `<div style="display: flex; gap: 12px;">`;
+        let buttonsHtml = `<div style="display: flex; gap: 12px; flex-shrink: 0;">`;
         if (options.type === 'confirm' || options.type === 'prompt') {
             buttonsHtml += `<button id="btn-modal-cancel" style="flex: 1; padding: 12px; background: #f3f4f6; color: #4b5563; border: none; border-radius: 12px; font-weight: 600; font-size: 14px; cursor: pointer;">Tidak</button>`;
         }
@@ -224,7 +225,72 @@ function createCustomModal(options) {
     });
 }
 
-// --- FITUR FITUR SEBELUMNYA TETAP ADA DI BAWAH INI ---
+// --- FITUR 8: DETAIL TARGET NUTRISI (MAKRO & MIKRO) ---
+function initLihatDetail() {
+    // Ambil tautan "Lihat Detail >" di bagian Target Hari Ini
+    const detailBtns = document.querySelectorAll('.target-header a');
+    
+    detailBtns.forEach(btn => {
+        btn.addEventListener('click', async function(e) {
+            e.preventDefault();
+            const text = this.textContent.trim().toLowerCase();
+
+            // Jika yang diklik adalah "Lihat Detail"
+            if (text.includes('detail')) {
+                await createCustomModal({
+                    type: 'alert',
+                    icon: '<i class="fa-solid fa-chart-pie" style="color: #439b46;"></i>',
+                    title: 'Status Nutrisi Harian',
+                    text: `
+                        <!-- Bagian Makronutrien -->
+                        <h4 style="color: var(--primary); margin-top: 5px; margin-bottom: 8px; border-bottom: 1px solid #eee; padding-bottom: 4px; font-size: 14px;">Makronutrien</h4>
+                        
+                        <div style="margin-bottom: 10px;">
+                            <div style="display:flex; justify-content: space-between; font-weight: 600;"><span>Karbohidrat</span><span>210 / 300g</span></div>
+                            <div style="background: #e5e7eb; height: 6px; border-radius: 3px; margin-top: 4px;"><div style="background: #3b82f6; width: 70%; height: 100%; border-radius: 3px;"></div></div>
+                        </div>
+                        <div style="margin-bottom: 10px;">
+                            <div style="display:flex; justify-content: space-between; font-weight: 600;"><span>Protein</span><span>62 / 80g</span></div>
+                            <div style="background: #e5e7eb; height: 6px; border-radius: 3px; margin-top: 4px;"><div style="background: #10b981; width: 77%; height: 100%; border-radius: 3px;"></div></div>
+                        </div>
+                        <div style="margin-bottom: 10px;">
+                            <div style="display:flex; justify-content: space-between; font-weight: 600;"><span>Lemak</span><span>45 / 65g</span></div>
+                            <div style="background: #e5e7eb; height: 6px; border-radius: 3px; margin-top: 4px;"><div style="background: #f59e0b; width: 69%; height: 100%; border-radius: 3px;"></div></div>
+                        </div>
+                        <div style="margin-bottom: 16px;">
+                            <div style="display:flex; justify-content: space-between; font-weight: 600;"><span>Serat</span><span>18 / 25g</span></div>
+                            <div style="background: #e5e7eb; height: 6px; border-radius: 3px; margin-top: 4px;"><div style="background: #8b5cf6; width: 72%; height: 100%; border-radius: 3px;"></div></div>
+                        </div>
+
+                        <!-- Bagian Mikronutrien -->
+                        <h4 style="color: var(--primary); margin-top: 20px; margin-bottom: 8px; border-bottom: 1px solid #eee; padding-bottom: 4px; font-size: 14px;">Mikronutrien (Perhatian Khusus)</h4>
+                        
+                        <div style="margin-bottom: 10px;">
+                            <div style="display:flex; justify-content: space-between; font-weight: 600;"><span>Zat Besi (Cegah Anemia)</span><span>12 / 15mg</span></div>
+                            <div style="background: #e5e7eb; height: 6px; border-radius: 3px; margin-top: 4px;"><div style="background: #ef4444; width: 80%; height: 100%; border-radius: 3px;"></div></div>
+                        </div>
+                        <div style="margin-bottom: 10px; background: #fff5f5; padding: 6px; border-radius: 8px; border: 1px solid #fecaca;">
+                            <div style="display:flex; justify-content: space-between;"><span style="color: #dc2626; font-weight:700;">Vitamin D</span><span style="color: #dc2626; font-weight:700;">4 / 15mcg</span></div>
+                            <div style="background: #fca5a5; height: 6px; border-radius: 3px; margin-top: 4px;"><div style="background: #dc2626; width: 26%; height: 100%; border-radius: 3px;"></div></div>
+                            <p style="font-size: 10px; color: #dc2626; margin-top: 6px; margin-bottom: 0;"><i>*Masih kurang! Yuk berjemur sebentar atau makan telur/ikan hari ini.</i></p>
+                        </div>
+                        <div style="margin-bottom: 10px;">
+                            <div style="display:flex; justify-content: space-between; font-weight: 600;"><span>Kalsium</span><span>600 / 1000mg</span></div>
+                            <div style="background: #e5e7eb; height: 6px; border-radius: 3px; margin-top: 4px;"><div style="background: #06b6d4; width: 60%; height: 100%; border-radius: 3px;"></div></div>
+                        </div>
+                        <div style="margin-bottom: 10px;">
+                            <div style="display:flex; justify-content: space-between; font-weight: 600;"><span>Natrium (Garam)</span><span>1500 / 2000mg</span></div>
+                            <div style="background: #e5e7eb; height: 6px; border-radius: 3px; margin-top: 4px;"><div style="background: #64748b; width: 75%; height: 100%; border-radius: 3px;"></div></div>
+                        </div>
+                    `,
+                    confirmText: 'Tutup'
+                });
+            }
+        });
+    });
+}
+
+// --- FITUR SEBELUMNYA TETAP ADA DI BAWAH INI ---
 
 function initFiturCepatMVP() {
     const featureItems = document.querySelectorAll('.feature-item');
@@ -421,5 +487,72 @@ function initNotificationFeature() {
                 text: `<div style="text-align: left;"><p style="margin-bottom: 12px; font-size: 13px;"><b>💧 Jangan Lupa Minum!</b><br>Cuaca sedang panas, pastikan target 8 gelas airmu tercapai hari ini.</p><p style="font-size: 13px;"><b>🥗 Promo Kantin Mitra</b><br>Diskon Rp 2.000 untuk Nasi Telur Kecap di Warteg Bahari (Khusus pengguna NutriKos).</p></div>`
             });
         }
+    });
+}
+
+// --- FITUR 8: DETAIL TARGET HARIAN (MAKRO & MIKRO NUTRIEN) ---
+function initLihatDetail() {
+    // Cari semua link di bagian header section (seperti "Lihat Detail >" atau "Lihat Semua >")
+    const sectionLinks = document.querySelectorAll('.target-header a, .section-header a');
+    
+    sectionLinks.forEach(link => {
+        link.addEventListener('click', async function(e) {
+            e.preventDefault();
+            const text = this.textContent.toLowerCase();
+
+            if (text.includes('detail')) {
+                // Pop-up Lengkap Makro dan Mikro Nutrien
+                await createCustomModal({
+                    type: 'alert',
+                    icon: '<i class="fa-solid fa-chart-pie" style="color: #439b46;"></i>',
+                    title: 'Rincian Gizi Harian',
+                    text: `
+                        <div style="text-align: left; margin-top: 10px;">
+                            <!-- MAKRONUTRIEN -->
+                            <h4 style="font-size: 14px; color: #1a1a1a; margin-bottom: 12px; border-bottom: 1px solid #f3f4f6; padding-bottom: 4px;">Makronutrien</h4>
+                            
+                            <div style="font-size: 12px; margin-bottom: 4px; display: flex; justify-content: space-between;"><span>Karbohidrat</span> <b>200 / 250g</b></div>
+                            <div style="width: 100%; height: 6px; background: #e5e7eb; border-radius: 4px; margin-bottom: 12px;"><div style="width: 80%; height: 100%; background: #f59e0b; border-radius: 4px;"></div></div>
+
+                            <div style="font-size: 12px; margin-bottom: 4px; display: flex; justify-content: space-between;"><span>Protein</span> <b>62 / 80g</b></div>
+                            <div style="width: 100%; height: 6px; background: #e5e7eb; border-radius: 4px; margin-bottom: 12px;"><div style="width: 77%; height: 100%; background: #3b82f6; border-radius: 4px;"></div></div>
+
+                            <div style="font-size: 12px; margin-bottom: 4px; display: flex; justify-content: space-between;"><span>Lemak</span> <b>45 / 60g</b></div>
+                            <div style="width: 100%; height: 6px; background: #e5e7eb; border-radius: 4px; margin-bottom: 20px;"><div style="width: 75%; height: 100%; background: #ef4444; border-radius: 4px;"></div></div>
+
+                            <!-- MIKRONUTRIEN (Fokus Anemia & Tulang/Vit D) -->
+                            <h4 style="font-size: 14px; color: #1a1a1a; margin-bottom: 12px; border-bottom: 1px solid #f3f4f6; padding-bottom: 4px;">Mikronutrien & Serat</h4>
+                            
+                            <div style="font-size: 11px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                                <div style="background: #f8f9fa; padding: 10px; border-radius: 8px; border: 1px solid #e5e7eb;">
+                                    <span style="color: #ef4444;"><i class="fa-solid fa-droplet"></i> Zat Besi</span><br>
+                                    <b style="font-size: 13px; color: #1a1a1a;">12 / 18 mg</b>
+                                </div>
+                                <div style="background: #f8f9fa; padding: 10px; border-radius: 8px; border: 1px solid #e5e7eb;">
+                                    <span style="color: #f59e0b;"><i class="fa-solid fa-sun"></i> Vitamin D</span><br>
+                                    <b style="font-size: 13px; color: #1a1a1a;">400 / 600 IU</b>
+                                </div>
+                                <div style="background: #f8f9fa; padding: 10px; border-radius: 8px; border: 1px solid #e5e7eb;">
+                                    <span style="color: #3b82f6;"><i class="fa-solid fa-bone"></i> Kalsium</span><br>
+                                    <b style="font-size: 13px; color: #1a1a1a;">800 / 1000 mg</b>
+                                </div>
+                                <div style="background: #f8f9fa; padding: 10px; border-radius: 8px; border: 1px solid #e5e7eb;">
+                                    <span style="color: #10b981;"><i class="fa-solid fa-leaf"></i> Serat</span><br>
+                                    <b style="font-size: 13px; color: #1a1a1a;">18 / 25 g</b>
+                                </div>
+                            </div>
+                        </div>
+                    `
+                });
+            } else if (text.includes('semua')) {
+                // Untuk tombol "Lihat Semua >" pada Rekomendasi Hari Ini
+                await createCustomModal({
+                    type: 'alert',
+                    icon: '<i class="fa-solid fa-list" style="color: #439b46;"></i>',
+                    title: 'Daftar Menu',
+                    text: 'Katalog Menu Lengkap akan mengarahkan kamu ke halaman Rekomendasi Menu di mana kamu bisa memfilter makanan berdasarkan budget!'
+                });
+            }
+        });
     });
 }
