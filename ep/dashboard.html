@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NutriKos Dashboard</title>
+    <!-- Font Awesome untuk ikon -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="mobile-container">
+        
+        <div class="status-bar-sim">
+            <span class="time">9:41</span>
+            <div class="status-icons">
+                <i class="fa-solid fa-signal"></i>
+                <i class="fa-solid fa-wifi"></i>
+                <i class="fa-solid fa-battery-full"></i>
+            </div>
+        </div>
+
+        <header class="header">
+            <div class="profile">
+                <!-- Ganti path gambar agar menjadi file lokal yang se-folder dengan file HTML -->
+                <img src="img/profile.webp" alt="Profile" class="profile-img">
+                <div class="profile-text">
+                    <h1>Halo, Oline Manuel 👋</h1>
+                    <p>Semangat jaga nutrisi hari ini!</p>
+                </div>
+            </div>
+            <button class="bell-btn">
+                <i class="fa-regular fa-bell"></i>
+                <span class="dot"></span>
+            </button>
+        </header>
+
+        <!-- KONTEN UTAMA -->
+        <main class="content">
+            
+            <!-- Target Hari Ini -->
+            <section class="card-target">
+                <div class="target-header">
+                    <h2>Target Hari Ini</h2>
+                    <a href="#">Lihat Detail ></a>
+                </div>
+                
+                <div class="cal-box">
+                    <p>Kalori</p>
+                    <div class="cal-values">
+                        <h3>1.650 <span>/ 2.000 kkal</span></h3>
+                        <span class="percent">82%</span>
+                    </div>
+                    <div class="progress-bar-bg"><div class="progress-bar-fill"></div></div>
+                </div>
+
+                <div class="macros">
+                    <div class="macro-item">
+                        <div class="macro-header">
+                            <span>Protein</span> <span>77%</span>
+                        </div>
+                        <div class="macro-progress-bg"><div class="macro-progress-fill" style="width: 77%;"></div></div>
+                        <p>62 / 80 g</p>
+                    </div>
+                    <div class="macro-item">
+                        <div class="macro-header">
+                            <span>Serat</span> <span>72%</span>
+                        </div>
+                        <div class="macro-progress-bg"><div class="macro-progress-fill" style="width: 72%;"></div></div>
+                        <p>18 / 25 g</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Minum Air -->
+            <section class="card-white water-container">
+                <div class="water-info">
+                    <div class="water-title">
+                        <i class="fa-solid fa-droplet"></i> Minum Air
+                    </div>
+                    <p class="water-count" id="water-count">6 / 8 gelas</p>
+                    <div class="glasses" id="glasses">
+                        <!-- 6 Gelas Terisi -->
+                        <div class="glass filled" role="button" aria-label="Gelas terisi" tabindex="0"></div>
+                        <div class="glass filled" role="button" aria-label="Gelas terisi" tabindex="0"></div>
+                        <div class="glass filled" role="button" aria-label="Gelas terisi" tabindex="0"></div>
+                        <div class="glass filled" role="button" aria-label="Gelas terisi" tabindex="0"></div>
+                        <div class="glass filled" role="button" aria-label="Gelas terisi" tabindex="0"></div>
+                        <div class="glass filled" role="button" aria-label="Gelas terisi" tabindex="0"></div>
+                        <!-- 2 Gelas Kosong -->
+                        <div class="glass" role="button" aria-label="Gelas kosong" tabindex="0"></div>
+                        <div class="glass" role="button" aria-label="Gelas kosong" tabindex="0"></div>
+                    </div>
+                </div>
+                <button class="btn-add-water"><i class="fa-solid fa-plus"></i></button>
+            </section>
+
+            <!-- Grid Bawah (Langkah & Kalori Terbakar) -->
+            <div class="grid-2">
+                
+                <!-- Langkah (Steps) -->
+                <div class="card-sm steps-wrapper">
+                    <div class="card-sm-title" style="width: 100%;">
+                        <i class="fa-solid fa-shoe-prints" style="transform: rotate(-45deg);"></i> Langkah
+                    </div>
+                    <div class="donut">
+                        <div class="donut-inner">3.528</div>
+                    </div>
+                    <p class="steps-goal">/ 5.600</p>
+                </div>
+
+                <!-- Kalori Terbakar (Calories Burned) -->
+                <div class="card-sm">
+                    <div class="card-sm-title">
+                        <i class="fa-solid fa-fire"></i> Terbakar
+                    </div>
+                    <div class="burn-val">2.568</div>
+                    <div class="burn-footer">
+                        <div class="burn-bar"><div class="burn-fill"></div></div>
+                        <div class="burn-labels">
+                            <div>
+                                <p class="val">610</p>
+                                <p class="lbl">Aktif</p>
+                            </div>
+                            <div style="text-align: right;">
+                                <p class="val">1.958</p>
+                                <p class="lbl">Rehat</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Rekomendasi Hari Ini -->
+            <section>
+                <div class="section-header">
+                    <h2>Rekomendasi Hari Ini</h2>
+                    <a href="rekomendasi.html">Lihat Semua ></a>
+                </div>
+                <div class="card-white food-card">
+                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Nasi Tempe Tumis" class="food-img">
+                    <div class="food-details">
+                        <h3>Nasi Tempe Tumis</h3>
+                        <span class="food-badge">Hemat & Sehat</span>
+                        <div class="food-stats">
+                            <span><i class="fa-solid fa-fire"></i> 520</span>
+                            <span><i class="fa-solid fa-leaf"></i> 23g</span>
+                        </div>
+                    </div>
+                    <div class="food-score">
+                        <p>Skor Gizi</p>
+                        <div class="score-circle">85</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Fitur Cepat -->
+            <section>
+               <div class="features-grid">
+                    
+                    <a href="#" class="feature-item" style="text-decoration: none;">
+                        <div class="feature-icon" style="color: #ef4444;"><i class="fa-solid fa-droplet"></i></div>
+                        <p>Cek Risiko<br>Anemia</p>
+                    </a>
+                    
+                    <a href="#" class="feature-item" style="text-decoration: none;">
+                        <div class="feature-icon" style="color: #f59e0b;"><i class="fa-solid fa-sun"></i></div>
+                        <p>Vitamin D</p>
+                    </a>
+                    
+                    <a href="#" class="feature-item" style="text-decoration: none;">
+                        <div class="feature-icon" style="color: #3b82f6;"><i class="fa-regular fa-calendar-check"></i></div>
+                        <p>Meal<br>Planner</p>
+                    </a>
+                    
+                    <a href="#" class="feature-item" style="text-decoration: none;">
+                        <div class="feature-icon" style="color: var(--primary);"><i class="fa-solid fa-wallet"></i></div>
+                        <p>Budget<br>Harian</p>
+                    </a>
+                    
+                </div> 
+            </section>
+
+        </main>
+
+        <!-- BOTTOM NAVIGATION -->
+        <nav class="bottom-nav">
+            <a href="#" class="nav-item active">
+                <i class="fa-solid fa-house"></i>
+                <span>Beranda</span>
+            </a>
+            <a href="rekomendasi.html" class="nav-item">
+                <i class="fa-regular fa-heart"></i>
+                <span>Rekomendasi</span>
+            </a>
+            
+            <!-- Tombol Tengah (Floating) -->
+            <div class="nav-item-center">
+                <div class="center-btn">
+                    <i class="fa-solid fa-leaf"></i>
+                </div>
+            </div>
+            
+            <a href="#" class="nav-item">
+                <i class="fa-regular fa-clock"></i>
+                <span>Riwayat</span>
+            </a>
+            <a href="profile.html" class="nav-item">
+                <i class="fa-regular fa-user"></i>
+                <span>Profil</span>
+            </a>
+        </nav>
+
+    </div>
+
+<script>
+    (function () {
+        const glassesEl = document.getElementById('glasses');
+        const countEl = document.getElementById('water-count');
+        if (!glassesEl || !countEl) return;
+
+        const capacity = 8;
+
+        function getCurrentCount() {
+            return glassesEl.querySelectorAll('.glass.filled').length;
+        }
+
+        function updateUI() {
+            const current = getCurrentCount();
+            countEl.textContent = `${current} / ${capacity} gelas`;
+        }
+
+        function fillOneGlass() {
+            const empty = glassesEl.querySelector('.glass:not(.filled)');
+            if (!empty) return;
+            empty.classList.add('filled');
+            empty.setAttribute('aria-label', 'Gelas terisi');
+            updateUI();
+        }
+
+        // Semua gelas jadi tombol: klik/Enter/Space akan menambah 1 gelas terisi (kalau masih ada yang kosong)
+        glassesEl.addEventListener('click', (e) => {
+            const target = e.target.closest('.glass');
+            if (!target) return;
+            fillOneGlass();
+        });
+
+        glassesEl.addEventListener('keydown', (e) => {
+            if (e.key !== 'Enter' && e.key !== ' ') return;
+            const target = e.target.closest('.glass');
+            if (!target) return;
+            e.preventDefault();
+            fillOneGlass();
+        });
+
+        // init
+        updateUI();
+    })();
+</script>
+</body>
+</html>
