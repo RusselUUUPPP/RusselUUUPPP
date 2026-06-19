@@ -369,6 +369,8 @@ function initFiturCepatMVP() {
                 await createCustomModal({ type: 'alert', icon: '<i class="fa-solid fa-utensils" style="color: #439b46;"></i>', title: `Budget: Rp ${budgetNum.toLocaleString('id-ID')}`, text: '<b>Rekomendasi:</b> Beli nasi putih dan tempe/tahu bacem di warteg terdekat.<br><br><i>Saran NutriKos: Tetap usahakan tambah porsi sayur agar berserat!</i>' });
             } else if (budgetNum >= 5000 && budgetNum <= 10000) {
                 await createCustomModal({ type: 'alert', icon: '<i class="fa-solid fa-utensils" style="color: #439b46;"></i>', title: `Budget: Rp ${budgetNum.toLocaleString('id-ID')}`, text: '<b>Rekomendasi:</b> Tumis Tahu Sayur atau Nasi Telur Kecap.<br><br>Sangat pas di kantong anak kos dan sudah mengandung cukup protein serta serat.' });
+            }else if (budgetNum >= 100000) {
+                await createCustomModal({ type: 'alert', icon: '<i class="fa-solid fa-utensils" style="color: #439b46;"></i>', title: `Budget: Rp ${budgetNum.toLocaleString('id-ID')}`, text: '<b>Rekomendasi:</b> Kamu anak orang kaya ya?<br><br>Ini mah makan apa aja gapake mikir.' });
             } else {
                 await createCustomModal({ type: 'alert', icon: '<i class="fa-solid fa-utensils" style="color: #439b46;"></i>', title: `Budget: Rp ${budgetNum.toLocaleString('id-ID')}`, text: '<b>Rekomendasi:</b> Nasi Tempe Tumis + Ayam Bakar, atau paket komplit Warteg dengan sayur bayam dan ikan.<br><br><i>Skor Gizi tinggi karena variasi lauk sangat baik!</i>' });
             }
